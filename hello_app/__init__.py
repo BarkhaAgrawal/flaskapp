@@ -1,9 +1,9 @@
 from flask import Flask
-from app.config import TestingConfig, DevelopmentConfig, ProductionConfig
+from hello_app.config import TestingConfig, DevelopmentConfig, ProductionConfig
 import os
 # blueprints
-from app.errors.handlers import errors
-from app.home.routes import home
+from hello_app.errors.handlers import errors
+from hello_app.home.routes import home
 
 
 app = Flask(__name__)
