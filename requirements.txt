@@ -3,5 +3,6 @@ Flask
 numpy==1.19.2
 gunicorn==20.0.4
 requests
-tensorflow==2.4.0
+tensorflow==1.15
+tensorflow-gpu==1.15
 posenet
