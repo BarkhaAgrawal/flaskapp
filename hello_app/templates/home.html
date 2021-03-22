@@ -1,7 +1,50 @@
-{% extends "layout.html" %}
-{% block title %}
-Home
-{% endblock %}
+{% extends "base.html" %}
 {% block content %}
-<p>Home page for the Visual Studio Code Flask tutorial.</p>
-{% endblock %}
+
+
+<style>
+body {
+  background-image: url('/static/background.jpg');
+};
+h1 {text-align: center;
+   
+    }
+p {text-align: center;}
+div {text-align: center;}
+div.relative {
+  position: relative;
+  left: 30px;
+/*   border: 3px solid #73AD21; */
+}
+</style>
+    
+
+<h1 style="color:red;">
+   Doctor TB
+</h1>
+
+<div class="relative">
+
+<form method="post" action="/" enctype="multipart/form-data">
+  <label for="myfile">Upload X-ray:</label>
+  <span></span>
+  <input type="file" id="file" name="file"><br><br>
+  <input type="submit" value="Submit">
+</form>
+    
+{% if filename %}
+    <div>
+        <img src="{{ url_for('home.display_image', filename=filename) }}" style="width:500px;height:600px;">
+    </div>
+{% endif %}
+    
+{% if prediction %}
+    <div>
+        <h2>{{ prediction  }}</h2>
+        <h2>{{ confidence  }}</h2>
+    </div>
+{% endif %}
+    
+</div>
+
+{% endblock content %}
