@@ -1,6 +1,10 @@
 # Pull a pre-built alpine docker image with nginx and python3 installed
-FROM tiangolo/uwsgi-nginx:python3.8-alpine-2020-12-19
-
+FROM tiangolo/uwsgi-nginx:python3.7-alpine-2019-10-14
+RUN apt-get update 
+RUN apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get install -y libgl1-mesa-dev
+RUN apt-get update && apt-get install -y python3-opencv
+RUN pip install opencv-python
 # Set the port on which the app runs; make both values the same.
 #
 # IMPORTANT: When deploying to Azure App Service, go to the App Service on the Azure 
@@ -25,9 +29,7 @@ WORKDIR /hello_app
 
 # Copy the app contents to the image
 COPY . /hello_app
-RUN apt-get update 
-RUN apt-get install ffmpeg libsm6 libxext6  -y
-RUN apt-get install -y libgl1-mesa-dev
+
 
 # If you have additional requirements beyond Flask (which is included in the
 # base image), generate a requirements.txt file with pip freeze and uncomment
