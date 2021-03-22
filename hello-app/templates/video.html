@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<style>
+body {
+  background-image: url('/static/background.jpeg');
+};
+h1 {text-align: center;
+   
+    }
+p {text-align: center;}
+div {text-align: center;}
+div.relative {
+  position: relative;
+  left: 30px;
+/*   border: 3px solid #73AD21; */
+}
+
+label {
+  display: inline-block;
+}
+.wrapper{position:relative;}
+.right,.left{width:50%; position:absolute;}
+.right{right:0;}
+.left{left:0;}
+</style>
+<h1 style="color:rgb(202, 199, 235);">
+   Stretch Break
+</h1>
+<label for="myfile" style="color:rgb(214, 214, 230);">Name:</label>
+
+{% if flag %}
+<div class="container" >
+  <div class="row">
+      <div class="left">
+          <h3 class="mt-5">Live Streaming</h3>
+          <img src="{{ url_for('home.video_feed') }}" width="100%">
+      </div>
+      {% endif %}
+      <div class="right">
+        <h3 class="mt-5">Yoga Pose</h3>
+        <img src="{{ url_for('home.video_feed1') }}" width="100%">
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="relative" style="float: left;" >
+  <form method="post" action="/stop" enctype="multipart/form-data">
+    <span></span>
+    <input type="submit" value="Stop">
+  </form>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<style>
+body {
+  background-image: url('/static/background.jpeg');
+};
+h1 {text-align: center;
+   
+    }
+p {text-align: center;}
+div {text-align: center;}
+div.relative {
+  position: relative;
+  left: 30px;
+/*   border: 3px solid #73AD21; */
+}
+
+label {
+  display: inline-block;
+}
+/* 
+@media screen and (max-width: 768px) {
+  label {
+    display: block;
+  }
+} */
+</style>
+    
+
+<h1 style="color:rgb(202, 199, 235);">
+   Stretch Break
+</h1>
+
+
+
+<div class="relative">
+
+<form method="post" action="/" enctype="multipart/form-data">
+  <br><br>
+  <label for="myfile" style="color:rgb(214, 214, 230);">Name:</label>
+  <br>
+  <input type="text" id="lname" name="lname"><br><br>
+  <span></span>
+  <label for="radio_1" style="color:rgb(214, 214, 230);">
+    <input type="radio" name="level" id="option1" />
+    Beginner
+  </label>
+  <label for="radio_2" style="color:rgb(214, 214, 230);">
+    <input type="radio" name="level" id="option2" />
+    Intermediate
+  </label>
+  <label for="radio_3" style="color:rgb(214, 214, 230);">
+    <input type="radio" name="level" id="option3" />
+    Advanced
+  </label>
+
+  <p>
+  <label for="radio_1" style="color:rgb(214, 214, 230);">
+    <input type="radio" name="time" id="option1" />
+    5 min
+  </label>
+  <label for="radio_2" style="color:rgb(214, 214, 230);">
+    <input type="radio" name="time" id="option2" />
+    10 min
+  </label>
+  <label for="radio_3" style="color:rgb(214, 214, 230);">
+    <input type="radio" name="time" id="option3" />
+    15 min
+  </label>
+</p>
+
+  <input type="submit" value="Start">
+</form>
+    
+{% if filename %}
+    <div>
+        <img src="{{ url_for('home.display_image', filename=filename) }}" style="width:500px;height:600px;">
+    </div>
+{% endif %}
+    
+{% if prediction %}
+    <div>
+        <h2>{{ prediction  }}</h2>
+        <h2>{{ confidence  }}</h2>
+    </div>
+{% endif %}
+    
+</div>
+{% if flag %}
+<div class="container">
+  <div class="row">
+      <div class="col-lg-8  offset-lg-2">
+          <h3 class="mt-5">Live Streaming</h3>
+          <img src="{{ url_for('home.video_feed') }}" width="100%">
+      </div>
+  </div>
+</div>
+{% endif %}
+
+{% endblock content %}

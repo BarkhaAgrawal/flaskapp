@@ -1,0 +1,10 @@
+--find-links wheelhouse
+scipy
+pyyaml
+Click==7.0
+Flask==1.1.1
+requests
+tensorflow==1.15
+argparse
+posenet
+opencv-python
