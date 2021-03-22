@@ -25,6 +25,8 @@ WORKDIR /hello_app
 
 # Copy the app contents to the image
 COPY . /hello_app
+RUN apt-get update ##[edited]
+RUN apt-get install ffmpeg libsm6 libxext6  -y
 
 # If you have additional requirements beyond Flask (which is included in the
 # base image), generate a requirements.txt file with pip freeze and uncomment
