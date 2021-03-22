@@ -210,7 +210,7 @@ def gen_frame1(cap1):  # generate frame by frame from camera
 def video_feed():
     return Response(getFrame(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@home.route('/video_feed1/<filename>')
+@home.route('/video_feed1/')
 def video_feed1():
     dirname = os.path.dirname(__file__)
     filename1 = os.path.join(dirname, '../static/abc.mp4')
