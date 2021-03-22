@@ -1,5 +1,6 @@
 # To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
 Flask
+numpy==1.19.2
 gunicorn==20.0.4
 requests
 posenet
