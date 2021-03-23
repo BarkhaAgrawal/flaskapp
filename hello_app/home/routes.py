@@ -80,7 +80,7 @@ keyValues = ['Nose', 'Left eye', 'Right eye', 'Left ear', 'Right ear', 'Left sho
              'Right shoulder', 'Left elbow', 'Right elbow', 'Left wrist', 'Right wrist',
              'Left hip', 'Right hip', 'Left knee', 'Right knee', 'Left ankle', 'Right ankle']
 tolerance = 30
-tf.compat.v1.disable_v2_behavior()
+# tf.compat.v1.disable_v2_behavior()
 
 def countRepetition(previous_pose, current_pose, previous_state, flag):
     if current_pose[0][10][0] == 0 and current_pose[0][10][1] == 0:
@@ -121,14 +121,15 @@ def countRepetition(previous_pose, current_pose, previous_state, flag):
 #     cap = cv2.VideoCapture(args.file)
 # else:
 cap = cv2.VideoCapture(0)
-cap.set(3, 640)
-cap.set(4, 360)
+cap.set(3, 1280)
+cap.set(4, 720)
 
 
 def getFrame():
     with tf.compat.v1.Session() as sess:
         model_cfg, model_outputs = posenet.load_model(101, sess)
         output_stride = model_cfg['output_stride']
+        print(output_stride,cap)
         previous_pose = '' # '' denotes it is empty, really fast checking!
         count = 0 # Stores the count of repetitions
         # A flag denoting change in state. 0 -> previous state is continuing, 1 -> state has changed
@@ -139,7 +140,7 @@ def getFrame():
         current_state = [2,2]
         while True:
             # Get a frame, and get the model's prediction
-            input_image, display_image, output_scale = posenet.read_cap(
+            input_image, display_image, output_scale = posenet.utils.read_cap(
                 cap, scale_factor=0.4, output_stride=output_stride)
             heatmaps_result, offsets_result, displacement_fwd_result, displacement_bwd_result = sess.run(
                 model_outputs,
