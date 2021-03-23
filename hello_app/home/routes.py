@@ -120,7 +120,7 @@ def countRepetition(previous_pose, current_pose, previous_state, flag):
 # if args.file is not None: # Frame source, speicifed file or the specified(or default) live cam
 #     cap = cv2.VideoCapture(args.file)
 # else:
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, 1280)
 cap.set(4, 720)
 
